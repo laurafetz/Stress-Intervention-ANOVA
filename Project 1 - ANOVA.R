@@ -2,6 +2,7 @@
 ### Last updated 21. Sep 2026
 ### Project 1 - ANOVA
 
+
 ### IMPORT MY DATA ###
 my_data <-read.table(data)
 

@@ -51,4 +51,4 @@ The quasi-experimental design does not identify a causal intervention effect. Ba
 
 ## Credits
 
-I completed this individual coursework project as **Laura Maria Fetz**. The data were supplied for the course.
+This was completed by **Laura Maria Fetz**. The data were supplied for the course.

@@ -1,3 +1,4 @@
+# Laura Maria Fetz
 # Baseline-adjusted intervention x employment model.
 # Run from repository root: Rscript analysis.R
 library(emmeans)
@@ -26,9 +27,9 @@ figure <- emmip(means,employmentStatus~intervention,CIs=TRUE)+
   labs(x="Intervention participation",y="Adjusted post-intervention stress",colour="Employment")+
   theme_minimal(base_size=12)
 ggsave("results/interaction.png",figure,width=7,height=4.5,dpi=180)
-capture.output(summary(additive),summary(interaction),comparison,contrast_results,
+capture.output(cat("# Project: Laura Maria Fetz\n"),summary(additive),summary(interaction),comparison,contrast_results,
                file="results/model_output.txt")
-capture.output(sessionInfo(),file="results/session_info.txt")
+capture.output(cat("# Project: Laura Maria Fetz\n"),sessionInfo(),file="results/session_info.txt")
 print(comparison);print(contrast_results)
 cat("Interaction model R-squared:",summary(interaction)$r.squared,"\n")
 cat("Additional explained variance:",summary(interaction)$r.squared-summary(additive)$r.squared,"\n")

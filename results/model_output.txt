@@ -1,3 +1,4 @@
+# Project: Laura Maria Fetz
 
 Call:
 lm(formula = stress2 ~ stress1 + intervention + employmentStatus, 

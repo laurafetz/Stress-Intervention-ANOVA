@@ -1,49 +1,54 @@
-# Stress Intervention: Baseline-Adjusted ANOVA
+# Stress intervention and employment status
 
-An R analysis of whether the association between intervention participation and post-intervention stress differs by employment status, adjusting for baseline stress. The supplied coursework dataset contains 320 parents (168 participants and 152 nonparticipants).
+I examined whether the association between a mindfulness intervention and parental stress differed by employment status. I used coursework data from 320 parents: 168 participants and 152 nonparticipants. I fitted an ANCOVA with baseline stress, intervention participation, employment status, and their interaction. The interaction improved fit, F(2, 313) = 34.98, p < .001. It added 1.40 percentage points of explained variance.
 
 ## Results
 
-The intervention × employment interaction improves the additive model: **F(2, 313) = 34.98, p < .001**, with an increase in R² from 0.9236 to 0.9376 (ΔR² = 0.0140). These values were recomputed with `analysis.R` on 8 October 2026.
+I estimated higher post-intervention stress among participants in each employment group, after adjusting for baseline stress.
 
-| Employment | Adjusted stress difference, participation minus nonparticipation | 95% CI |
+| Employment status | Adjusted difference: participation minus nonparticipation | 95% CI |
 | --- | ---: | ---: |
 | Full-time | 18.74 | [16.71, 20.77] |
 | Part-time | 13.56 | [10.85, 16.27] |
 | Unemployed | 8.82 | [6.82, 10.83] |
 
-Intervals and p-values use a Bonferroni adjustment across the three contrasts. Higher post-intervention stress is associated with participation in each group. The quasi-experimental design does **not establish that the intervention caused these differences**.
+I used a Bonferroni adjustment across the three contrasts. R² was 0.9236 for the additive model and 0.9376 for the interaction model. The table comes from [intervention_contrasts.csv](results/intervention_contrasts.csv), recomputed on 8 October 2026.
 
-![Baseline-adjusted stress by intervention and employment](results/interaction.png)
+![Adjusted stress by participation and employment status](results/interaction.png)
 
-## Run
+<details>
+<summary>Code and files</summary>
 
-Install R and the analysis packages:
-
-```r
-install.packages(c("emmeans", "ggplot2"))
-```
-
-From the repository root:
+I ran the analysis in R with `emmeans` and `ggplot2` installed.
 
 ```bash
 Rscript analysis.R
 ```
 
-The script fits additive and interaction models, exports adjusted and standardized contrasts, and saves the figure. Standardization uses the sample SD of post-intervention stress; it is not a residual-SD effect size.
-
-## Files
+The supplied data contain `employmentStatus`, `intervention`, `stress1`, and `stress2`. Standardized contrasts use the sample SD of post-intervention stress.
 
 ```text
 Stress-Intervention-ANOVA/
-├── analysis.R
-├── data/stress_intervention.txt
-├── docs/original_report.docx
-├── results/                 # Recomputed tables, figure, model output, R session
 ├── .gitignore
-└── README.md
+├── README.md
+├── analysis.R
+├── data/
+│   └── stress_intervention.txt
+└── results/
+    ├── interaction.png
+    ├── intervention_contrasts.csv
+    ├── model_comparison.csv
+    ├── model_output.txt
+    ├── session_info.txt
+    └── standardized_contrasts.csv
 ```
 
-The original report is retained for context; the findings above and CSV tables are readable directly on GitHub. Dataset fields are `employmentStatus`, `intervention`, `stress1` (baseline), and `stress2` (post-intervention). The data were supplied for the course; the repository does not document an independent empirical sampling protocol.
+</details>
 
-Laura M. Fetz
+## Limitations
+
+The quasi-experimental design does not identify a causal intervention effect. Baseline adjustment does not remove confounding from unmeasured differences between participants and nonparticipants. I cannot generalize beyond this coursework sample without information about recruitment.
+
+## Credits
+
+I completed this individual coursework project as **Laura Maria Fetz**. The data were supplied for the course.

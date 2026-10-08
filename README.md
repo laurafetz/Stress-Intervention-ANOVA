@@ -1,4 +1,4 @@
-# Project - 1 - ANOVA
+# ANOVA
 # Stress Intervention Analysis in R
 
 This project examines whether participation in an intervention is associated with changes in stress levels and whether the effectiveness of the intervention differs depending on participants' employment status.

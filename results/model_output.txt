@@ -1,0 +1,77 @@
+
+Call:
+lm(formula = stress2 ~ stress1 + intervention + employmentStatus, 
+    data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.2693  -3.6950  -0.2849   3.5102  14.0000 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                -2.36331    3.69941  -0.639    0.523    
+stress1                     1.19227    0.06012  19.832  < 2e-16 ***
+interventionyes            13.69246    0.57825  23.679  < 2e-16 ***
+employmentStatusparttime   -2.63572    2.02659  -1.301    0.194    
+employmentStatusunemployed -4.66168    1.09802  -4.246 2.87e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 5.158 on 315 degrees of freedom
+Multiple R-squared:  0.9236,	Adjusted R-squared:  0.9226 
+F-statistic: 952.2 on 4 and 315 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = stress2 ~ stress1 + intervention * employmentStatus, 
+    data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.2015  -3.4109  -0.0307   3.2156  14.7725 
+
+Coefficients:
+                                           Estimate Std. Error t value Pr(>|t|)
+(Intercept)                                -5.90573    3.38306  -1.746  0.08185
+stress1                                     1.20565    0.05455  22.100  < 2e-16
+interventionyes                            18.74132    0.84290  22.234  < 2e-16
+employmentStatusparttime                    0.58255    1.99473   0.292  0.77045
+employmentStatusunemployed                  0.65869    1.18169   0.557  0.57764
+interventionyes:employmentStatusparttime   -5.18042    1.40613  -3.684  0.00027
+interventionyes:employmentStatusunemployed -9.91793    1.18592  -8.363 2.04e-15
+                                              
+(Intercept)                                .  
+stress1                                    ***
+interventionyes                            ***
+employmentStatusparttime                      
+employmentStatusunemployed                    
+interventionyes:employmentStatusparttime   ***
+interventionyes:employmentStatusunemployed ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.678 on 313 degrees of freedom
+Multiple R-squared:  0.9376,	Adjusted R-squared:  0.9364 
+F-statistic: 783.4 on 6 and 313 DF,  p-value: < 2.2e-16
+
+Analysis of Variance Table
+
+Model 1: stress2 ~ stress1 + intervention + employmentStatus
+Model 2: stress2 ~ stress1 + intervention * employmentStatus
+  Res.Df    RSS Df Sum of Sq     F    Pr(>F)    
+1    315 8379.0                                 
+2    313 6848.3  2    1530.7 34.98 1.947e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+ contrast employmentStatus  estimate        SE  df  lower.CL upper.CL t.ratio
+ yes - no fulltime         18.741321 0.8428952 313 16.712543 20.77010  22.234
+ yes - no parttime         13.560901 1.1255597 313 10.851773 16.27003  12.048
+ yes - no unemployed        8.823394 0.8339676 313  6.816104 10.83069  10.580
+ p.value
+ <0.0001
+ <0.0001
+ <0.0001
+
+Confidence level used: 0.95 
+Conf-level adjustment: bonferroni method for 3 estimates 
+P value adjustment: bonferroni method for 3 tests 
